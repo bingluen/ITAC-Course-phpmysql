@@ -29,5 +29,12 @@
 
 	$sth = $dbh->prepare($sql);
 
-	$sth->execute(array($_POST['inputname'], $_POST['inputemail'], $_POST['inputMessages']));
+	if($sth->execute(array($_POST['inputname'], $_POST['inputemail'], $_POST['inputMessages'])))
+	{
+		echo json_encode("successful!");
+	}
+	else
+	{
+		echo "fail";
+	}
 ?>	

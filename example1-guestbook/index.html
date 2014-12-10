@@ -209,7 +209,7 @@
     <section id="contact" data-scroll-index="3">
         <h3 class="header">Have me make stuff for you.</h3>
         <div class="wrapper">
-            <form role="form" method="POST" action="test.php">
+            <form role="form">
                 <div class="form-group">
                       <label for="exampleInputName">Name</label>
                     <input type="text" class="form-control" placeholder="Enter Name" name="inputname"id="name">
@@ -220,11 +220,13 @@
                 </div>
                 <label for="exampleInputMessages">Message</label>
                 <textarea class="form-control" rows="5" placeholder="Message" name="inputMessages" id="messages"></textarea>
-                <input class="btn btn-default btn-block" style="margin-top:30px;" type="submit" value="Submit">
+                <input class="btn btn-default btn-block" style="margin-top:30px;" value="Submit" onclick="ajax();">
             </form>
         </div>
     </section>
     <script type="text/javascript">
+    function ajax()
+    {
         $.ajax({
             url: 'test.php',
             type: 'POST',
@@ -232,10 +234,10 @@
             data: {
                 inputname: $('#name').val(),
                 inputemail: $('#email').val(),
-                inputmessages: $('#messages').val()
+                inputMessages: $('#messages').val()
             },
         })
-        .done(function() {
+        .done(function(response) {
             console.log("success");
         })
         .fail(function() {
@@ -244,6 +246,7 @@
         .always(function() {
             console.log("complete");
         });
+    }
         
     </script>
 </body>
