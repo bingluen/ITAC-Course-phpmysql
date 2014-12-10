@@ -1,5 +1,5 @@
 <?php
-
-	$dsn = "mysql:host=localhost;dbname=demo";
-	$dbh = new PDO ($dsn, "root", "");
+	require("config.php")
+	$dsn = DatabaseType .':host=' . Host . ';dbname=' . DatabaseName;
+	$dbh = new PDO ($dsn, DatabaseUser, DatabasePassword);
 ?>
