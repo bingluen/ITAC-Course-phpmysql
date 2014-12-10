@@ -223,6 +223,8 @@
                 <input class="btn btn-default btn-block" style="margin-top:30px;" value="Submit" onclick="ajax();">
             </form>
         </div>
+        
+
     </section>
     <script type="text/javascript">
     function ajax()
@@ -238,7 +240,10 @@
             },
         })
         .done(function(response) {
-            console.log("success");
+            str = ''
+            str += "<div style=\"margin-top: 60px;\" class=\"wrapper\" id=\"guestbook\">"
+            str += "<h3>"+$('#name').val()+"</h3>"+$('#email').val()+"<hr>"+$('#messages').val()+"</div>"
+            $('#contact').append(str)
         })
         .fail(function() {
             console.log("error");
