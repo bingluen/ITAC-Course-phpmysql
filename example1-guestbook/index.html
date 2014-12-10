@@ -212,18 +212,40 @@
             <form role="form" method="POST" action="test.php">
                 <div class="form-group">
                       <label for="exampleInputName">Name</label>
-                    <input type="text" class="form-control" placeholder="Enter Name" name="inputname">
+                    <input type="text" class="form-control" placeholder="Enter Name" name="inputname"id="name">
                 </div>
                 <div class="form-group">
                     <label for="exampleInputEmail">Email address</label>
-                    <input type="email" class="form-control" placeholder="Enter Email" name="inputemail">
+                    <input type="email" class="form-control" placeholder="Enter Email" name="inputemail" id="email">
                 </div>
                 <label for="exampleInputMessages">Message</label>
-                <textarea class="form-control" rows="5" placeholder="Message" name="inputMessages"></textarea>
+                <textarea class="form-control" rows="5" placeholder="Message" name="inputMessages" id="messages"></textarea>
                 <input class="btn btn-default btn-block" style="margin-top:30px;" type="submit" value="Submit">
             </form>
         </div>
     </section>
+    <script type="text/javascript">
+        $.ajax({
+            url: 'test.php',
+            type: 'POST',
+            dataType: 'json',
+            data: {
+                inputname: $('#name').val(),
+                inputemail: $('#email').val(),
+                inputmessages: $('#messages').val()
+            },
+        })
+        .done(function() {
+            console.log("success");
+        })
+        .fail(function() {
+            console.log("error");
+        })
+        .always(function() {
+            console.log("complete");
+        });
+        
+    </script>
 </body>
 
 </html>
