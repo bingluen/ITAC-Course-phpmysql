@@ -227,6 +227,10 @@
 
     </section>
     <script type="text/javascript">
+    $(document).ready(function()
+        {
+            getMessages();
+        });
     function ajax()
     {
         $.ajax({
@@ -252,7 +256,33 @@
             console.log("complete");
         });
     }
+    function getMessages()
+    {
+        $.ajax({
+            url: 'getMessages.php',
+            type: 'GET',
+            dataType: 'json'
+        })
+        .done(function(data) {
+            console.log(data);
+            for(var i in data)
+            {
+                str = ''
+                str += "<div style=\"margin-top: 60px;\" class=\"wrapper\" id=\"guestbook\">"
+                str += "<h3>"+data[i]['name']+"</h3>"+data[i]['email']+"<hr>"+data[i]['messages']+"</div>"
+                $('#contact').append(str)
+            }
+            
+            
+        })
+        .fail(function() {
+            console.log("error");
+        })
+        .always(function() {
+            console.log("complete");
+        });
         
+    }
     </script>
 </body>
 
