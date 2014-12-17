@@ -7,8 +7,10 @@
 	$sth = $dbh->prepare($sql);
 	$sth->execute();
 	$result = $sth->fetchAll();
-	
-	echo '<pre>';
-	var_dump($result);
-	echo '</pre>';
+
+	//echo '<pre>';
+	//var_dump($result);
+	//echo '</pre>';
+
+	echo json_encode($result);
 ?>
